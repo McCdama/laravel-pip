@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\QuoteController;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,16 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/ping', function () {
-    return view('pong');
-});
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/quote', [QuoteController::class, 'showQuote']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-
-
-
+require __DIR__.'/auth.php';
